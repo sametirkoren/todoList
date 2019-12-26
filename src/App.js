@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import uuid from "uuid";
+import "bootstrap/dist/css/bootstrap.min.css";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
+class App extends Component {
+  state = {
+    items: [
+      { id: 1, title: "wake up" },
+      { id: 2, title: "make breakfast" }
+    ],
+    id: uuid(),
+    item: "",
+    editItem: false
+  };
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  handeleChange = e => {
+    console.log("handle Change");
+  };
+  handleSubmit = e => {
+    console.log("handle Submit");
+  };
+
+  clearList = () => {
+    console.log("clear list ");
+  };
+
+  handleDelete = id => {
+    console.log(`handle edit ${id}`);
+  };
+
+  handleEdit = id => {
+    console.log(`edit edit ${id}`);
+  };
+
+  render() {
+    return (
+      <div>
+        <div className="container">
+          <div className="row">
+            <div className="col-10 mx-auto col-md-8 mt-5">
+              <h3 className="text-capitalize text-center">Todo Input</h3>
+              <TodoInput
+                item={this.state.item}
+                handeleChange={this.handeleChange}
+                handleSubmit={this.handleSubmit}
+                editItem={this.state.editItem}
+              />
+              <TodoList
+                items={this.state.items}
+                clearList={this.clearList}
+                handleDelete={this.handleDelete}
+                handleEdit={this.handleEdit}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-
 export default App;
