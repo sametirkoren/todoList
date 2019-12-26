@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import uuid from "uuid";
+
 import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 class App extends Component {
@@ -14,7 +17,7 @@ class App extends Component {
     editItem: false
   };
 
-  handeleChange = e => {
+  handleChange = e => {
     console.log("handle Change");
   };
   handleSubmit = e => {
@@ -42,7 +45,7 @@ class App extends Component {
               <h3 className="text-capitalize text-center">Todo Input</h3>
               <TodoInput
                 item={this.state.item}
-                handeleChange={this.handeleChange}
+                handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 editItem={this.state.editItem}
               />
